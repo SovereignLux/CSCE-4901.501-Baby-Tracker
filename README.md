@@ -1,6 +1,6 @@
 # Baby Tracker
 
-Team Name: Hash Slinging Slashers add<br />
-Members: Angelou May Abrajano, Jude Qubbaj, Corinne Norwood, Melanie Santillan add<br />
-Instructor: Diana Rabah add<br />
+Team Name: Hash Slinging Slashers <br />
+Members: Angelou May Abrajano, Jude Qubbaj, Corinne Norwood, Melanie Santillan <br />
+Instructor: Diana Rabah <br />
 TA: Jordan Black
