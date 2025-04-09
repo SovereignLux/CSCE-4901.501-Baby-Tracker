@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -9,8 +10,9 @@ export default function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.logo}>Baby Tracker</Text>
+    <LinearGradient colors={['#B2EBF2', '#FCE4EC']} style={styles.container}>
+      <Image source={require('../assets/logo.png')} style={styles.logoImage} />
+
       <Text style={styles.title}>LOGIN</Text>
 
       <TextInput
@@ -20,7 +22,7 @@ export default function LoginScreen() {
         value={email}
         onChangeText={setEmail}
       />
-      <View style={styles.passwordContainer}>
+      <TouchableOpacity style={styles.passwordContainer}>
         <TextInput
           style={styles.passwordInput}
           placeholder="Password"
@@ -29,23 +31,23 @@ export default function LoginScreen() {
           onChangeText={setPassword}
           secureTextEntry={!showPassword}
         />
-        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-          <Text style={styles.showText}>{showPassword ? "Hide" : "Show"}</Text>
-        </TouchableOpacity>
-      </View>
+        <Text style={styles.showText} onPress={() => setShowPassword(!showPassword)}>
+          {showPassword ? 'Hide' : 'Show'}
+        </Text>
+      </TouchableOpacity>
 
       <TouchableOpacity>
         <Text style={styles.forgotText}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Home')}>
         <Text style={styles.loginText}>Login</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
         <Text style={styles.signupText}>Not a member? Sign up.</Text>
       </TouchableOpacity>
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -54,15 +56,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#E3F2FD',
   },
-  logo: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+  logoImage: {
+    width: 90,
+    height: 90,
+    resizeMode: 'contain',
+    marginBottom: 60,
   },
   title: {
-    fontSize: 20,
+    fontSize: 22,
+    fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
@@ -80,15 +83,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 5,
     marginBottom: 15,
+    paddingHorizontal: 10,
   },
   passwordInput: {
     flex: 1,
     height: 40,
-    paddingHorizontal: 10,
   },
   showText: {
-    paddingHorizontal: 10,
     color: '#007AFF',
+    fontWeight: '600',
   },
   forgotText: {
     color: '#007AFF',
